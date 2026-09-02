@@ -13,6 +13,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import org.apache.commons.beanutils.BeanUtils;
@@ -23,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.tennis.containers.Scene;
 import com.tennis.containers.ScoreBug;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,7 +49,7 @@ public class IndexController
 	@Autowired
 	TennisService tennisService;
 	
-	public static String expiry_date = "2024-12-31";
+	public static String expiry_date = "2026-12-31";
 	public static String current_date = "";
 	public static String error_message = "";
 	public static ATP_2022 this_ATP_2022;
@@ -267,7 +268,7 @@ public class IndexController
 	
 	@RequestMapping(value = {"/upload_match_setup_data", "/reset_and_upload_match_setup_data"}
 		,method={RequestMethod.GET,RequestMethod.POST})    
-	public @ResponseBody String uploadFormDataToSessionObjects(MultipartHttpServletRequest request) 
+	public @ResponseBody String uploadFormDataToSessionObjects(HttpServletRequest request) 
 			throws IllegalAccessException, InvocationTargetException, JAXBException, IOException
 	{
 		if (request.getRequestURI().contains("upload_match_setup_data") 
@@ -308,11 +309,12 @@ public class IndexController
 		return objectMapper.writeValueAsString(session_match);
 	}
 	
-	@RequestMapping(value = {"/processTennisProcedures"}, method={RequestMethod.GET,RequestMethod.POST})    
+	@RequestMapping(value = {"/processTennisProcedures.html"}, method={RequestMethod.GET,RequestMethod.POST})    
 	public @ResponseBody String processTennisProcedures(
 			@RequestParam(value = "whatToProcess", required = false, defaultValue = "") String whatToProcess,
 			@RequestParam(value = "valueToProcess", required = false, defaultValue = "") String valueToProcess) throws Exception
 	{	
+		
 		switch (whatToProcess.toUpperCase()) {
 		case "NAMESUPER_GRAPHICS-OPTIONS": case "NAMESUPER-SP_GRAPHICS-OPTIONS": case "NAMESUPER-SP1_GRAPHICS-OPTIONS": case "NAMESUPER-DP1_GRAPHICS-OPTIONS":
 		case "SINGLE-MATCHPROMO_GRAPHICS-OPTIONS": case "DOUBLE-MATCHPROMO_GRAPHICS-OPTIONS": case "SINGLE-LT_MATCHPROMO_GRAPHICS-OPTIONS": case "DOUBLE-LT_MATCHPROMO_GRAPHICS-OPTIONS":

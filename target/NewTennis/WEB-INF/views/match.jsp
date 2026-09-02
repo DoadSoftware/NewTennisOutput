@@ -11,6 +11,8 @@
 	<script type="text/javascript" src="<c:url value='/resources/javascript/index.js' />"></script>
 	<link rel="stylesheet" href="<c:url value='/webjars/bootstrap/5.3.3/css/bootstrap.min.css' />" />
 	
+<script type="text/javascript">
+
   $(document).on("keydown", function(e){
 	  
 	  if($('#waiting_modal').hasClass('show')) {
@@ -87,7 +89,7 @@
   </script>  
 </head>
 <!-- <body onload="afterPageLoad('MATCH');"> -->
-<form:form name="tennis_form" autocomplete="off" action="match" method="POST" enctype="multipart/form-data">
+<form:form name="tennis_form" autocomplete="off" action="match" method="POST">
 <div class="content py-5" style="background-color: #EAE8FF; color: #2E008B">
   <div class="container">
 	<div class="row">
@@ -105,7 +107,7 @@
 			    <div class="panel panel-default">
 			      <div class="panel-heading">
 			        <h5 class="panel-title">
-			          <a data-toggle="collapse" data-parent="#match_configuration" href="#load_setup_match">Configuration</a>
+			          <a data-bs-toggle="collapse" href="#load_setup_match">Configuration</a>
 			        </h5>
 			      </div>
 			      <div id="load_setup_match" class="panel-collapse collapse">

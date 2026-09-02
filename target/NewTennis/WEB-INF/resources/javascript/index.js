@@ -112,18 +112,30 @@ function processUserSelectionData(whatToProcess,dataToProcess){
 			processTennisProcedures('POPULATE-SCOREBUG');
 			break;
 		case 'F2':
-			$("#select_event_div").hide();
-			$("#match_configuration").hide();
-			$("#tennis_div").hide();
-			addItemsToList('FF_MATCHID-OPTIONS',null);
-			//processTennisProcedures('POPULATE-MATCHID');
+			switch ($('#selectedBroadcaster').val().toUpperCase()){
+			case 'TPL_2023':
+				$("#select_event_div").hide();
+				$("#match_configuration").hide();
+				$("#tennis_div").hide();
+				addItemsToList('FF_MATCHID-OPTIONS',null);
+				break;
+			default:
+				processTennisProcedures('POPULATE-MATCHID');
+				break;
+			}
 			break;
 		case 'F3':
-			$("#select_event_div").hide();
-			$("#match_configuration").hide();
-			$("#tennis_div").hide();
-			addItemsToList('FF_MATCHID_DOUBLE-OPTIONS',null);
-			//processTennisProcedures('POPULATE-MATCHID_DOUBLE');
+			switch ($('#selectedBroadcaster').val().toUpperCase()){
+			case 'TPL_2023':
+				$("#select_event_div").hide();
+				$("#match_configuration").hide();
+				$("#tennis_div").hide();
+				addItemsToList('FF_MATCHID_DOUBLE-OPTIONS',null);
+				break;
+			default:
+				processTennisProcedures('POPULATE-MATCHID_DOUBLE');
+				break;
+			}
 			break;
 		case 'F4':
 			processTennisProcedures('POPULATE-LT-MATCHID');
@@ -138,18 +150,30 @@ function processUserSelectionData(whatToProcess,dataToProcess){
 			processTennisProcedures('POPULATE-LT-MATCH_RESULTDOUBLES');
 			break;
 		case 'F8':
-			$("#select_event_div").hide();
-			$("#match_configuration").hide();
-			$("#tennis_div").hide();
-			addItemsToList('FF_MATCH_RESULTSINGLES-OPTIONS',null);
-			//processTennisProcedures('POPULATE-FF-MATCH_RESULTSINGLES');
+			switch ($('#selectedBroadcaster').val().toUpperCase()){
+			case 'TPL_2023':
+				$("#select_event_div").hide();
+				$("#match_configuration").hide();
+				$("#tennis_div").hide();
+				addItemsToList('FF_MATCH_RESULTSINGLES-OPTIONS',null);
+				break;
+			default:
+				processTennisProcedures('POPULATE-FF-MATCH_RESULTSINGLES');
+				break;
+			}
 			break;
 		case 'F9':
-			$("#select_event_div").hide();
-			$("#match_configuration").hide();
-			$("#tennis_div").hide();
-			addItemsToList('FF_MATCH_RESULTDOUBLES-OPTIONS',null);
-			//processTennisProcedures('POPULATE-FF-MATCH_RESULTDOUBLES');
+			switch ($('#selectedBroadcaster').val().toUpperCase()){
+			case 'TPL_2023':
+				$("#select_event_div").hide();
+				$("#match_configuration").hide();
+				$("#tennis_div").hide();
+				addItemsToList('FF_MATCH_RESULTSINGLES-OPTIONS',null);
+				break;
+			default:
+				processTennisProcedures('POPULATE-FF-MATCH_RESULTDOUBLES');
+				break;
+			}
 			break;
 		case 'F10':
 			$("#select_event_div").hide();
@@ -202,11 +226,17 @@ function processUserSelectionData(whatToProcess,dataToProcess){
 			processTennisProcedures('ORDER_OF_MATCH_GRAPHICS-OPTIONS');
 			break;
 		case 'h':
-			$("#select_event_div").hide();
-			$("#match_configuration").hide();
-			$("#tennis_div").hide();
-			addItemsToList('SCOREBUG-HEADER_OPTION',null);
-			//processTennisProcedures('POPULATE-SCOREBUG_HEADER');
+			switch ($('#selectedBroadcaster').val().toUpperCase()){
+			case 'TPL_2023':
+				$("#select_event_div").hide();
+				$("#match_configuration").hide();
+				$("#tennis_div").hide();
+				addItemsToList('SCOREBUG-HEADER_OPTION',null);
+				break;
+			default:
+				processTennisProcedures('POPULATE-SCOREBUG_HEADER');
+				break;
+			}
 			break;
 		case 'i':
 			switch ($('#selectedBroadcaster').val()) {
@@ -1451,7 +1481,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 			option.text = 'Score';
 			select.appendChild(option);
 			
-			row.insertCell(0).appendChild(select);
+			row.insertCell(cellCount).appendChild(select);
+			cellCount = cellCount + 1;
 			
 			select = document.createElement('select');
 			select.style = 'width:300px';
@@ -1497,7 +1528,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 	
 		    div.append(option);
 		    
-		    row.insertCell(2).appendChild(div);
+		    row.insertCell(cellCount).appendChild(div);
+			cellCount = cellCount + 1;
 		    
 			document.getElementById('select_graphic_options_div').style.display = '';
 			break;
@@ -1536,7 +1568,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 				option.text = 'With Photo';
 				select.appendChild(option);
 				
-				row.insertCell(0).appendChild(select);
+				row.insertCell(cellCount).appendChild(select);
+				cellCount = cellCount + 1;
 				
 				option = document.createElement('input');
 		   	 	option.type = 'button';
@@ -1573,7 +1606,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 		
 			    div.append(option);
 			    
-			    row.insertCell(1).appendChild(div);
+			    row.insertCell(cellCount).appendChild(div);
+				cellCount = cellCount + 1;
 			    
 				document.getElementById('select_graphic_options_div').style.display = '';
 				break;
@@ -1614,7 +1648,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1635,7 +1670,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
 				    
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
@@ -1654,7 +1690,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					select = document.createElement('select');
 					select.style = 'width:300px';
@@ -1671,7 +1708,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 					option.text = 'With Photo';
 					select.appendChild(option);
 					
-					row.insertCell(1).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1699,8 +1737,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(2).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				case 'SINGLE-LT_MATCHPROMO-OPTIONS':
@@ -1718,7 +1757,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1739,8 +1779,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				case 'DOUBLE-MATCHPROMO-OPTIONS': case 'LT_DOUBLE-MATCHPROMO-OPTIONS':
@@ -1759,7 +1800,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					select = document.createElement('select');
 					select.style = 'width:300px';
@@ -1776,7 +1818,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 					option.text = 'With Photo';
 					select.appendChild(option);
 					
-					row.insertCell(1).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1804,8 +1847,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(2).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				case 'DOUBLE-LT_MATCHPROMO-OPTIONS':
@@ -1824,7 +1868,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1845,8 +1890,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 			}
@@ -1877,8 +1923,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 			}
 			//header_text.innerHTML = header_text.innerHTML  + home_name + ' : ' + '[ ' + api_value_home + ' ]' + "<br>" + "<br>" 
 									//+ away_name  + ' : ' + '[ ' + api_value_away + ' ]';
-			row.insertCell(0).appendChild(header_text);
-			
+			row.insertCell(cellCount).appendChild(header_text);
+			cellCount = cellCount + 1;
 		}
 		break;
 	case 'ORDER_OF_TIE-OPTIONS': case 'ORDER_OF_MATCH-OPTIONS': case 'LT_TEAM-OPTIONS':
@@ -1913,7 +1959,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1934,8 +1981,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 					
@@ -1952,7 +2000,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					}
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -1973,8 +2022,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 					
@@ -1991,7 +2041,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2012,8 +2063,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				}
@@ -2065,7 +2117,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 					}
 					select.appendChild(option);
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2086,8 +2139,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					
 					break;
@@ -2124,7 +2178,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2145,8 +2200,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				case 'MATCH_LT_PLAYERPROFILE':
@@ -2182,7 +2238,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2203,8 +2260,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				case 'FF_PLAYERPROFILE-OPTIONS':
@@ -2220,7 +2278,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2241,8 +2300,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					
 					break;
@@ -2259,7 +2319,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2280,8 +2341,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					
 					break;
@@ -2298,7 +2360,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					select = document.createElement('select');
 					select.style = 'width:130px';
@@ -2312,7 +2375,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(1).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2333,8 +2397,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(2).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					
 					break;
@@ -2352,7 +2417,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 					});
 					
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					if($('#selectedBroadcaster').val().toUpperCase() == 'TPL_2023'){
 						select = document.createElement('select');
@@ -2370,7 +2436,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						option.text = 'PLAYER OF THE MATCH';
 						select.appendChild(option);
 						
-						row.insertCell(1).appendChild(select);
+						row.insertCell(cellCount).appendChild(select);
+						cellCount = cellCount + 1;
 					}
 					
 					option = document.createElement('input');
@@ -2392,8 +2459,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(2).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					
 					break;
@@ -2413,7 +2481,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 					option.text = 'Away' ;
 					select.appendChild(option);
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2434,7 +2503,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				case 'NAMESUPER-SP-OPTIONS':
@@ -2458,7 +2529,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						}
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2479,8 +2551,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				   
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					break;
 				
@@ -2497,7 +2570,8 @@ function addItemsToList(whatToProcess, dataToProcess)
 						select.appendChild(option);
 					});
 					
-					row.insertCell(0).appendChild(select);
+					row.insertCell(cellCount).appendChild(select);
+					cellCount = cellCount + 1;
 					
 					option = document.createElement('input');
 			   	 	option.type = 'button';
@@ -2518,8 +2592,9 @@ function addItemsToList(whatToProcess, dataToProcess)
 			
 				    div.append(option);
 				    
-				    row.insertCell(1).appendChild(div);
-				    
+				    row.insertCell(cellCount).appendChild(div);
+					cellCount = cellCount + 1;
+					
 					document.getElementById('select_graphic_options_div').style.display = '';
 					
 					break;
